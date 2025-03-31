@@ -1,0 +1,31 @@
+title: Storefront UI
+icon: 🖥️
+
+status:
+  draft: Draft
+  listed: Published
+
+options:
+  changeSlug: true
+  changeStatus: true
+  duplicate: true
+
+fields:
+  title:
+    label: Storefront Name
+    type: text
+    required: true
+  
+  description:
+    label: Description
+    type: textarea
+  
+  template:
+    label: Template Key
+    type: text
+    help: Identifier used by Eleventy to load the correct template
+  
+  screenshot:
+    label: Screenshot
+    type: files
+    max: 1

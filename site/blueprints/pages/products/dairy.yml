@@ -1,0 +1,26 @@
+# site/blueprints/pages/dairy.yml
+title: Dairy & Eggs
+extends: product
+icon: 🥛
+
+fields:
+  allergens:
+    label: Contains Allergens
+    type: checkboxes
+    options:
+      milk: Milk
+      eggs: Eggs
+  
+  storage:
+    label: Storage
+    type: select
+    options:
+      refrigerated: Refrigerated
+      frozen: Frozen
+    default: refrigerated
+    width: 1/2
+  
+  shelf_life:
+    label: Shelf Life (days)
+    type: number
+    width: 1/2

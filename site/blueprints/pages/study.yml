@@ -1,0 +1,201 @@
+title: Research Study
+icon: 🔍
+
+status:
+  draft: Draft
+  unlisted:
+    label: Ready
+    text: Study is ready but not published
+  listed:
+    label: Published
+    text: Study is published
+    
+options:
+  changeSlug: true
+  changeStatus: true
+  duplicate: true
+
+tabs:
+  study:
+    label: Study Information
+    icon: 📋
+    columns:
+      - width: 2/3
+        sections:
+          main:
+            type: fields
+            fields:
+              title:
+                label: Study Title
+                type: text
+                width: 2/3
+                required: true
+              
+              status:
+                label: Study Status
+                type: select
+                options:
+                  upcoming: Upcoming
+                  active: Active
+                  completed: Completed
+                width: 1/3
+                required: true
+              
+              overview:
+                label: Project Context
+                type: textarea
+                size: medium
+                buttons: true
+                required: true
+              
+              objectives:
+                label: Key Objectives
+                type: structure
+                required: true
+                fields:
+                  objective:
+                    label: Objective
+                    type: text
+      
+      - width: 1/3
+        sections:
+          sidebar:
+            type: fields
+            fields:
+              startDate:
+                label: Start Date
+                type: date
+                time: false
+                width: 1/2
+                required: true
+              
+              endDate:
+                label: End Date
+                type: date
+                time: false
+                width: 1/2
+                required: true
+              
+              category:
+                label: Product Category
+                type: pages
+                query: site.find('categories').children
+                layout: cards
+                required: true
+                help: Select the product category this study will use
+                info: "{{ page.products.toPages.count }} products"
+              
+              storefront:
+                label: Storefront UI
+                type: pages
+                query: site.find('storefronts').children
+                required: true
+
+  participants:
+    label: Participant Criteria
+    icon: 👥
+    sections:
+      recruitment:
+        type: fields
+        fields:
+          quota:
+            label: Participant Quota
+            type: number
+            min: 1
+            default: 100
+            width: 1/4
+            required: true
+          
+          ageRanges:
+            label: Age Ranges
+            type: checkboxes
+            options:
+              18-24: 18-24
+              25-34: 25-34
+              35-44: 35-44
+              45-54: 45-54
+              55-64: 55-64
+              65plus: 65+
+            width: 3/4
+            required: true
+          
+          gender:
+            label: Gender
+            type: checkboxes
+            options:
+              male: Male
+              female: Female
+              nonbinary: Non-binary
+              other: Other
+            width: 1/2
+            required: true
+          
+          location:
+            label: Geographic Location
+            type: tags
+            width: 1/2
+          
+          income:
+            label: Income Brackets
+            type: checkboxes
+            options:
+              under25k: Under $25,000
+              25k-50k: $25,000-$50,000
+              50k-75k: $50,000-$75,000
+              75k-100k: $75,000-$100,000
+              100k-150k: $100,000-$150,000
+              over150k: Over $150,000
+          
+          screenerQuestions:
+            label: Additional Screener Questions
+            type: structure
+            fields:
+              question:
+                label: Question
+                type: text
+                width: 1/2
+              
+              answerType:
+                label: Answer Type
+                type: select
+                options:
+                  yesno: Yes/No
+                  multiplechoice: Multiple Choice
+                  text: Text
+                width: 1/2
+              
+              options:
+                label: Answer Options
+                type: tags
+                when:
+                  answerType: multiplechoice
+              
+              requiredAnswer:
+                label: Required Answer for Qualification
+                type: text
+                help: What answer(s) must the participant give to qualify?
+
+  results:
+    label: Results
+    icon: 📊
+    when:
+      status: completed
+    sections:
+      studyResults:
+        type: fields
+        fields:
+          participantCount:
+            label: Total Participants
+            type: info
+            text: "{{ page.participants.toInt }}"
+          
+          averageTime:
+            label: Average Completion Time
+            type: text
+            disabled: true
+          
+          downloadReport:
+            label: Download Full Report
+            type: files
+            layout: cards
+            uploads: report

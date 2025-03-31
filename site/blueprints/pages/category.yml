@@ -1,0 +1,45 @@
+title: Product Category
+icon: 🏷️
+
+status:
+  draft: Draft
+  listed: Published
+
+options:
+  changeSlug: true
+  changeStatus: true
+  duplicate: true
+
+fields:
+  title:
+    label: Category Name
+    type: text
+    required: true
+  
+  description:
+    label: Description
+    type: textarea
+  
+  products:
+    label: Products
+    type: pages
+    query: site.index.filterBy('template', 'product')
+    multiple: true
+  
+  target:
+    label: Target Product
+    type: pages
+    query: page.products.toPages
+    max: 1
+  
+  benchmark:
+    label: Benchmark Products
+    type: pages
+    query: page.products.toPages
+    multiple: true
+  
+  competitor:
+    label: Competitor Products
+    type: pages
+    query: page.products.toPages
+    multiple: true

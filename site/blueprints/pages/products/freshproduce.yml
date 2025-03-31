@@ -1,0 +1,30 @@
+# site/blueprints/pages/produce.yml
+title: Produce
+extends: product
+icon: 🥦
+
+fields:
+  origin:
+    label: Country of Origin
+    type: text
+    width: 1/2
+  
+  organic:
+    label: Organic
+    type: toggle
+    width: 1/2
+  
+  seasonal:
+    label: Seasonal
+    type: toggle
+    width: 1/2
+  
+  unit:
+    label: Unit
+    type: select
+    options:
+      ea: each
+      kg: per kg
+      lb: per lb
+      bunch: per bunch
+    width: 1/2
