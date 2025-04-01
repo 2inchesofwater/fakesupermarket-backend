@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '4.7.0',
-        'version' => '4.7.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '7e745bfe5097c4b3e64ff70b63c7e1201301905e',
         'name' => 'getkirby/starterkit',
         'dev' => true,
     ),
     'versions' => array(
+        'beebmx/kirby-policy' => array(
+            'pretty_version' => '1.0.7',
+            'version' => '1.0.7.0',
+            'type' => 'kirby-plugin',
+            'install_path' => __DIR__ . '/../../site/plugins/kirby-policy',
+            'aliases' => array(),
+            'reference' => 'f9f149a095aab3b5656666d734cdd4dc50f8a307',
+            'dev_requirement' => false,
+        ),
         'christian-riesen/base32' => array(
             'pretty_version' => '1.6.0',
             'version' => '1.6.0.0',
@@ -65,12 +74,12 @@
             'dev_requirement' => false,
         ),
         'getkirby/starterkit' => array(
-            'pretty_version' => '4.7.0',
-            'version' => '4.7.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '7e745bfe5097c4b3e64ff70b63c7e1201301905e',
             'dev_requirement' => false,
         ),
         'laminas/laminas-escaper' => array(

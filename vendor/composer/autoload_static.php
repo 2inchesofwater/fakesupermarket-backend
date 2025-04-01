@@ -7,11 +7,11 @@ namespace Composer\Autoload;
 class ComposerStaticInit22a25317e039ebd4087f009d57db9440
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'f864ae44e8154e5ff6f4eec32f46d37f' => __DIR__ . '/../..' . '/kirby/config/setup.php',
         '87988fc7b1c1f093da22a1a3de972f3a' => __DIR__ . '/../..' . '/kirby/config/helpers.php',
     );
@@ -49,6 +49,7 @@ class ComposerStaticInit22a25317e039ebd4087f009d57db9440
         ),
         'B' => 
         array (
+            'Beebmx\\KirbyPolicy\\' => 19,
             'Base32\\' => 7,
         ),
     );
@@ -96,12 +97,16 @@ class ComposerStaticInit22a25317e039ebd4087f009d57db9440
         ),
         'Kirby\\' => 
         array (
-            0 => __DIR__ . '/..' . '/getkirby/composer-installer/src',
-            1 => __DIR__ . '/../..' . '/kirby/src',
+            0 => __DIR__ . '/../..' . '/kirby/src',
+            1 => __DIR__ . '/..' . '/getkirby/composer-installer/src',
         ),
         'Composer\\Semver\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/semver/src',
+        ),
+        'Beebmx\\KirbyPolicy\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/site/plugins/kirby-policy/src',
         ),
         'Base32\\' => 
         array (
@@ -129,6 +134,9 @@ class ComposerStaticInit22a25317e039ebd4087f009d57db9440
     public static $classMap = array (
         'Base32\\Base32' => __DIR__ . '/..' . '/christian-riesen/base32/src/Base32.php',
         'Base32\\Base32Hex' => __DIR__ . '/..' . '/christian-riesen/base32/src/Base32Hex.php',
+        'Beebmx\\KirbyPolicy\\Blueprints' => __DIR__ . '/../..' . '/site/plugins/kirby-policy/src/Blueprints.php',
+        'Beebmx\\KirbyPolicy\\Profiles' => __DIR__ . '/../..' . '/site/plugins/kirby-policy/src/Profiles.php',
+        'Beebmx\\KirbyPolicy\\Reader' => __DIR__ . '/../..' . '/site/plugins/kirby-policy/src/Reader.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Composer\\Semver\\Comparator' => __DIR__ . '/..' . '/composer/semver/src/Comparator.php',
         'Composer\\Semver\\CompilingMatcher' => __DIR__ . '/..' . '/composer/semver/src/CompilingMatcher.php',

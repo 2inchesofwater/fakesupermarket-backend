@@ -1,0 +1,46 @@
+title: Owner
+description: Can manage all content and update study statuses
+permissions:
+  access:
+    panel: true
+    site: true
+    settings: false
+    users: true
+  files:
+    create: true
+    changeName: true
+    delete: true
+    replace: true
+    update: true
+  languages:
+    create: false
+    delete: false
+  pages:
+    create: true
+    changeSlug: true
+    changeStatus: true
+    changeTemplate: false
+    changeTitle: true
+    delete: true
+    duplicate: true
+    preview: true
+    read: true
+    sort: true
+    update: true
+  site:
+    update: true
+  user:
+    changeEmail: true
+    changeLanguage: true
+    changeName: true
+    changePassword: true
+    changeRole: false
+    delete: false
+    update: true
+  users:
+    create: false
+    delete: false
+    update: false
+
+# Extend the default user blueprint fields
+extends: users/default

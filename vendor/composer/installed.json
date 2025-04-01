@@ -1,6 +1,63 @@
 {
     "packages": [
         {
+            "name": "beebmx/kirby-policy",
+            "version": "1.0.7",
+            "version_normalized": "1.0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beebmx/kirby-policy.git",
+                "reference": "f9f149a095aab3b5656666d734cdd4dc50f8a307"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beebmx/kirby-policy/zipball/f9f149a095aab3b5656666d734cdd4dc50f8a307",
+                "reference": "f9f149a095aab3b5656666d734cdd4dc50f8a307",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.1",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "getkirby/cms": "^4.2",
+                "laravel/pint": "^1.10",
+                "pestphp/pest": "^2.0",
+                "spatie/ray": "^1.40"
+            },
+            "time": "2024-08-02T17:45:13+00:00",
+            "type": "kirby-plugin",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Beebmx\\KirbyPolicy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fernando Gutierrez",
+                    "homepage": "https://beeb.mx"
+                }
+            ],
+            "description": "Kirby Blueprint Policies for Kirby 4",
+            "keywords": [
+                "Policy",
+                "kirby",
+                "kirby-4",
+                "policies",
+                "security"
+            ],
+            "support": {
+                "issues": "https://github.com/beebmx/kirby-policy/issues",
+                "source": "https://github.com/beebmx/kirby-policy/tree/1.0.7"
+            },
+            "install-path": "../../site/plugins/kirby-policy"
+        },
+        {
             "name": "christian-riesen/base32",
             "version": "1.6.0",
             "version_normalized": "1.6.0.0",

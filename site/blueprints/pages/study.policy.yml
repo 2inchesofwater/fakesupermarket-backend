@@ -1,4 +1,4 @@
-title: Research Study
+title: Study
 icon: 🔍
 
 status:
@@ -25,11 +25,6 @@ tabs:
           main:
             type: fields
             fields:
-              title:
-                label: Study name
-                type: text
-                required: true
-              
               workflow:
                 label: Workflow status
                 type: select
@@ -40,6 +35,19 @@ tabs:
                 required: true
                 when:
                   status: listed
+
+              test:
+                label: Study Title
+                type: headline
+                when: 
+                  user:
+                    role: admin
+
+              test_readonly:
+                label: Study Title
+                type: info
+                text: "{{ page.title }}"
+                when: "{{ kirby.user.role.name === 'client' }}"
               
               overview:
                 label: Project context
@@ -48,6 +56,7 @@ tabs:
                 size: small
                 buttons: true
                 required: false
+                disabled: "{{ kirby.user.role.name === 'client' }}"
               
               objectives:
                 label: Key objectives

@@ -1,0 +1,47 @@
+title: Team
+description: Can edit content and update study status to 'Review'. 
+permissions:
+  access:
+    panel: true
+    site: true
+    settings: false
+    users: false
+  files:
+    create: true
+    changeName: true
+    delete: true
+    replace: true
+    update: true
+  languages:
+    create: false
+    delete: false
+  pages:
+    create: true
+    changeSlug: true
+    # Regular page status changes are allowed
+    changeStatus: true
+    changeTemplate: false
+    changeTitle: true
+    delete: false
+    duplicate: true
+    preview: true
+    read: true
+    sort: true
+    update: true
+  site:
+    update: false
+  user:
+    changeEmail: true
+    changeLanguage: true
+    changeName: true
+    changePassword: true
+    changeRole: false
+    delete: false
+    update: true
+  users:
+    create: false
+    delete: false
+    update: false
+
+# Extend the default user blueprint fields
+extends: users/default

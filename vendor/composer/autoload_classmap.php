@@ -8,6 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'Base32\\Base32' => $vendorDir . '/christian-riesen/base32/src/Base32.php',
     'Base32\\Base32Hex' => $vendorDir . '/christian-riesen/base32/src/Base32Hex.php',
+    'Beebmx\\KirbyPolicy\\Blueprints' => $baseDir . '/site/plugins/kirby-policy/src/Blueprints.php',
+    'Beebmx\\KirbyPolicy\\Profiles' => $baseDir . '/site/plugins/kirby-policy/src/Profiles.php',
+    'Beebmx\\KirbyPolicy\\Reader' => $baseDir . '/site/plugins/kirby-policy/src/Reader.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Composer\\Semver\\Comparator' => $vendorDir . '/composer/semver/src/Comparator.php',
     'Composer\\Semver\\CompilingMatcher' => $vendorDir . '/composer/semver/src/CompilingMatcher.php',
