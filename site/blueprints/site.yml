@@ -16,31 +16,43 @@ sections:
     headline: Upcoming studies
     type: pages
     template: study
+    status: listed
     create: false
     limit: 6
     empty: No upcoming studies
-    layout: cards
+    layout: cardlets
     size: small
+    info: "Starts: {{ page.startDate.toDate('M j') }}"
+    filters:
+      workflow: upcoming
 
   activeStudies:
     headline: Active studies
     type: pages
     template: study
+    status: listed
     create: false
     limit: 6
     empty: No active studies
-    layout: cards
+    layout: cardlets
     size: small
+    info: "Until: {{ page.endDate.toDate('M j') }}"
+    filters:
+      workflow: active    
 
   completedStudies:
     headline: Completed studies
     type: pages
     template: study
+    status: listed
     create: false
     limit: 6
     empty: No completed studies
-    layout: cards
+    layout: cardlets
     size: small
+    info: "Ended: {{ page.endDate.toDate('M j, Y') }}"
+    filters:
+      workflow: completed    
   
   # Divider and Resources heading
   resourcesDivider:
@@ -61,15 +73,17 @@ sections:
   
   # Individual resources sections - no columns
   wipStudies:
-    headline: Draft studies
+    headline: Works in progress
     type: pages
     template: study
+    status: draft, unlisted
+    sortBy: status desc modified desc
     create: 
       - study
     limit: 6
     empty: Create a new study
-    layout: cards
-    size: small
+    layout: cardlets
+    size: tiny
 
   collections:
     headline: Product collections

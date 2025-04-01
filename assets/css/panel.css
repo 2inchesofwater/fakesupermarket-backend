@@ -7,7 +7,7 @@
 }
 
 /* Style the Kanban board to display horizontally */
-.k-sections > .k-column {
+.k-site-view .k-sections > .k-column {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
