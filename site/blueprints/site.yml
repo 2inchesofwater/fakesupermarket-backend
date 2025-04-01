@@ -1,67 +1,91 @@
 title: Dashboard
 
 sections:
+  # Research Studies heading
   kanbanHeading:
-    type: info
-    headline: Research Studies
-    text: Manage your research studies workflow
-    
+    type: fields
+    class: studies-section-heading
+    fields:
+      mainHeading:
+        label: Studies
+        type: headline
+        numbered: false
+  
+  # Your three studies sections kept together for CSS targeting
   upcomingStudies:
-    headline: Upcoming Studies
+    headline: Upcoming studies
     type: pages
     template: study
-    create:
-      - study
+    create: false
+    limit: 6
     empty: No upcoming studies
     layout: cards
     size: small
 
   activeStudies:
-    headline: Active Studies
+    headline: Active studies
     type: pages
     template: study
+    create: false
+    limit: 6
     empty: No active studies
     layout: cards
     size: small
 
   completedStudies:
-    headline: Completed Studies
+    headline: Completed studies
     type: pages
     template: study
+    create: false
+    limit: 6
     empty: No completed studies
     layout: cards
     size: small
   
-  resourcesHeading:
-    type: info
-    headline: Resources
-    text: Manage product categories and storefront templates
+  # Divider and Resources heading
+  resourcesDivider:
+    type: fields
+    fields:
+      dividerLine:
+        type: line
+  
+  # Resources section with columns
+  resources:
+    type: fields
+    fields:
+      resourcesHeading:
+        label: Workbench
+        type: headline
+        size: h2
 
-columns:
-  - width: 1/3
-    sections:
-      categories:
-        headline: Product Categories
-        type: pages
-        template: category
-        create:
-          - category
-        empty: No categories found
+  
+  # Individual resources sections - no columns
+  wipStudies:
+    headline: Draft studies
+    type: pages
+    template: study
+    create: 
+      - study
+    limit: 6
+    empty: Create a new study
+    layout: cards
+    size: small
 
-  - width: 1/3
-    sections:
-      storefronts:
-        headline: Storefront UIs
-        type: pages
-        template: storefront
-        create:
-          - storefront
-        empty: No storefronts found
+  collections:
+    headline: Product collections
+    type: pages
+    template: collections
+    create:
+      - collection
+    limit: 6
+    empty: No product collections found
+
+  storefronts:
+    headline: Storefront UIs
+    type: pages
+    template: storefront
+    create:
+      - storefront
+    limit: 6
+    empty: No storefronts found
         
-  - width: 1/3
-    sections:
-      # Reserved for future use
-      placeholderSection:
-        type: info
-        headline: Future Section
-        text: This space is reserved for future functionality

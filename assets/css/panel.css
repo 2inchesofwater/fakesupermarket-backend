@@ -7,30 +7,33 @@
 }
 
 /* Style the Kanban board to display horizontally */
-.k-sections {
+.k-sections > .k-column {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: 
-    "heading heading heading"
-    "upcoming active completed";
+  grid-template-areas:
+    "heading heading heading" 
+    "upcoming active completed"
+    "divider divider divider"
+    "subhead subhead subhead"
+    "wip collections storefronts";
   grid-gap: 20px;
   margin-bottom: 30px;
 }
 
 /* Place each section in the grid */
-.k-section-name-kanbanheading {
+.k-section-name-kanbanHeading {
   grid-area: heading;
 }
 
-.k-section-name-upcomingstudies {
+.k-section-name-upcomingStudies {
   grid-area: upcoming;
-  border: 1px solid red;
+  border: 1px solid #eee;
   border-radius: 6px;
   padding: 10px;
   background-color: #f9f9f9;
 }
 
-.k-section-name-activestudies {
+.k-section-name-activeStudies {
   grid-area: active;
   border: 1px solid #eee;
   border-radius: 6px;
@@ -38,12 +41,32 @@
   background-color: #f0f8ff;
 }
 
-.k-section-name-completedstudies {
+.k-section-name-completedStudies {
   grid-area: completed;
   border: 1px solid #eee;
   border-radius: 6px;
   padding: 10px;
   background-color: #f0fff0;
+}
+
+.k-section-name-resourcesDivider {
+  grid-area: divider;
+}
+
+.k-section-name-resources {
+  grid-area: subhead;
+}
+
+.k-section-name-wipStudies {
+  grid-area: wip;
+}
+
+.k-section-name-collections {
+  grid-area: collections;
+}
+
+.k-section-name-storefronts {
+  grid-area: storefronts;
 }
 
 /* Add visual cues to represent the workflow */
