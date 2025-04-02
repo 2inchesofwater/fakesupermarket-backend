@@ -36,23 +36,17 @@ tabs:
                 when:
                   status: listed
 
-              test:
-                label: Study Title
-                type: headline
-                when: 
-                  user:
-                    role: admin
-
-              test_readonly:
-                label: Study Title
+              admin:
+                label: Admin
                 type: info
-                text: "{{ page.title }}"
-                when: "{{ kirby.user.role.name === 'client' }}"
+                policy:
+                  - admin
+
               
               overview:
                 label: Project context
                 help: "Provide background information about why this study is being conducted, including business objectives, user problems being addressed, and how findings will inform product decisions. Briefly explain how this research fits into the larger product strategy or roadmap. An AI may use this information to provide more insightful analysis." 
-                type: textarea
+                type: contentview
                 size: small
                 buttons: true
                 required: false

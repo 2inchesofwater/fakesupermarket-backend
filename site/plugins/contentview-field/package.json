@@ -1,0 +1,15 @@
+{
+  "name": "kirby-contentview-field",
+  "version": "0.0.1",
+  "description": "A custom field type for Kirby CMS that displays content in a view-only format",
+  "main": "src/index.js",
+  "author": "Dan Gilmore",
+  "license": "MIT",
+  "scripts": {
+    "dev": "kirbyup src/index.js --watch",
+    "build": "kirbyup src/index.js"
+  },
+  "devDependencies": {
+    "kirbyup": "^0.17.0"
+  }
+}
