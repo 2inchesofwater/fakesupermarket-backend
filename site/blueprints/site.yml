@@ -13,7 +13,7 @@ sections:
   
   # Your three studies sections kept together for CSS targeting
   upcomingStudies:
-    headline: Upcoming studies
+    headline: Upcoming 
     type: pages
     template: study
     status: listed
@@ -27,7 +27,7 @@ sections:
       workflow: upcoming
 
   activeStudies:
-    headline: Active studies
+    headline: Active 
     type: pages
     template: study
     status: listed
@@ -41,7 +41,7 @@ sections:
       workflow: active    
 
   completedStudies:
-    headline: Completed studies
+    headline: Completed 
     type: pages
     template: study
     status: listed

@@ -36,21 +36,14 @@ tabs:
                 when:
                   status: listed
 
-              admin:
-                label: Admin
-                type: info
-                policy:
-                  - admin
-
               
               overview:
                 label: Project context
                 help: "Provide background information about why this study is being conducted, including business objectives, user problems being addressed, and how findings will inform product decisions. Briefly explain how this research fits into the larger product strategy or roadmap. An AI may use this information to provide more insightful analysis." 
-                type: contentview
+                type: textarea
                 size: small
                 buttons: true
                 required: false
-                disabled: "{{ kirby.user.role.name === 'client' }}"
               
               objectives:
                 label: Key objectives

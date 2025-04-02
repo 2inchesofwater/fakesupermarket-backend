@@ -1,4 +1,7 @@
 <?php
+
+file_put_contents(__DIR__ . '/debug.log', 'Plugin loaded at ' . date('Y-m-d H:i:s') . "\n", FILE_APPEND);
+
 /**
  * Contentview Field for Kirby CMS
  * 
