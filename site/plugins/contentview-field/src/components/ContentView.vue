@@ -2,7 +2,7 @@
   <k-field
     :label="label"
     :help="help"
-    class="k-contentview-field"
+    class="k-contentviewfield"
     :class="extraClass"
   >
     <div class="k-contentview-container">

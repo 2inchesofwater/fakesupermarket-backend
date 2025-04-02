@@ -44,7 +44,12 @@ tabs:
                 size: small
                 buttons: true
                 required: false
-              
+
+              overviewView:
+                label: "Project context"
+                type: contentview
+                text: {{ page.overview }}
+
               objectives:
                 label: Key objectives
                 help: "List the specific research questions this study aims to answer. Good objectives are focused, measurable, and directly related to user behaviors or attitudes you want to understand. Each objective should help inform clear design or product decisions. An AI may use this information to generate questions for participants."

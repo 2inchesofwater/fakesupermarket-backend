@@ -1,5 +1,5 @@
 {
-  "name": "kirby-contentview-field",
+  "name": "contentviewfield",
   "version": "0.0.1",
   "description": "A custom field type for Kirby CMS that displays content in a view-only format",
   "main": "src/index.js",

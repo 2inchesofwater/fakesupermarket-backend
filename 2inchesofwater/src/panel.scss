@@ -16,8 +16,11 @@
     "divider divider divider"
     "subhead subhead subhead"
     "wip collections storefronts";
-  grid-gap: 20px;
-  margin-bottom: 30px;
+  grid-gap: var(--spacing-2);
+}
+
+.k-site-view .k-section+.k-section {
+  margin-top: unset;
 }
 
 /* Place each section in the grid */
@@ -27,7 +30,7 @@
 
 .k-section-name-upcomingStudies {
   grid-area: upcoming;
-  border: 1px solid #red;
+  border: 1px solid #eee;
   border-radius: 6px;
   padding: 10px;
   background-color: #f9f9f9;

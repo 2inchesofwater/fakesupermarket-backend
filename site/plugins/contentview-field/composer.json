@@ -1,5 +1,5 @@
 {
-  "name": "2inchesofwater/contentview-field",
+  "name": "2inchesofwater/contentview",
   "description": "A custom field type for Kirby CMS that displays content in a view-only format",
   "type": "kirby-plugin",
   "license": "MIT",
