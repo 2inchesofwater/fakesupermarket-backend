@@ -1,3 +1,15 @@
+/* Style the Kanban board to display horizontally on the Dashboard */
+.k-site-view .k-sections > .k-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "heading heading heading" "upcoming active completed" "divider divider divider" "subhead subhead subhead" "wip collections storefronts";
+  grid-gap: var(--spacing-2);
+}
+.k-site-view .k-site-view .k-section + .k-section {
+  margin-top: unset;
+}
+
+/* Kanban grid on the dashboard page */
 /* Create a container for the Kanban board */
 .k-section-name-kanbanheading,
 .k-section-name-upcomingstudies,
@@ -6,19 +18,6 @@
   position: relative;
 }
 
-/* Style the Kanban board to display horizontally */
-.k-site-view .k-sections > .k-column {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: "heading heading heading" "upcoming active completed" "divider divider divider" "subhead subhead subhead" "wip collections storefronts";
-  grid-gap: var(--spacing-2);
-}
-
-.k-site-view .k-section + .k-section {
-  margin-top: unset;
-}
-
-/* Place each section in the grid */
 .k-section-name-kanbanHeading {
   grid-area: heading;
 }
@@ -96,5 +95,13 @@
 /* Clear the grid for the resources section */
 .k-section-name-resourcesheading {
   grid-column: 1/-1;
-  margin-top: 20px;
+}
+
+/* Panel-wide styling changes */
+.k-structure-field .k-table + footer button:where([data-size=xs]) {
+  aspect-ratio: 16/9;
+}
+
+.k-help {
+  font-size: var(--text-xs);
 }

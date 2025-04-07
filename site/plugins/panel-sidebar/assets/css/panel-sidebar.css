@@ -1,0 +1,130 @@
+/* Panel Sidebar Styles */
+
+.panel-sidebar-wrapper {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 64px); /* Adjust based on header height */
+  overflow: hidden;
+}
+
+.panel-sidebar-nav {
+  width: 220px;
+  background-color: var(--color-background);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.panel-sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+/* Navigation list */
+.panel-sidebar-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Group styles */
+.panel-sidebar-group {
+  margin: 0;
+  padding: 0;
+}
+
+.panel-sidebar-group-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-background);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.panel-sidebar-group-button:hover {
+  background-color: var(--color-background-light);
+}
+
+.panel-sidebar-group-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Item styles */
+.panel-sidebar-item {
+  margin: 0;
+  padding: 0;
+}
+
+.panel-sidebar-item-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2rem; /* Indentation */
+  background-color: var(--color-background);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  cursor: pointer;
+}
+
+.panel-sidebar-item-button:hover {
+  background-color: var(--color-background-light);
+}
+
+.panel-sidebar-item-button.panel-sidebar-active {
+  background-color: var(--color-background);
+  border-left: 3px solid var(--color-focus);
+  padding-left: calc(2rem - 3px); /* Adjust for the border */
+}
+
+/* Icon styles */
+.panel-sidebar-icon {
+  margin-right: 0.5rem;
+}
+
+/* Content panels */
+.panel-sidebar-panel {
+  display: none;
+}
+
+.panel-sidebar-panel-active {
+  display: block;
+}
+
+/* Collapsed group */
+.panel-sidebar-collapsed {
+  display: none;
+}
+
+/* Animation for smooth transitions */
+.panel-sidebar-group-items {
+  transition: height 0.3s ease;
+}
+
+/* Error and empty states */
+.panel-sidebar-panel-error {
+  color: var(--color-negative);
+  padding: 1rem;
+  border: 1px solid var(--color-negative-outline);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.panel-sidebar-panel-empty {
+  color: var(--color-text-light);
+  padding: 1rem;
+  border: 1px dashed var(--color-border);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}

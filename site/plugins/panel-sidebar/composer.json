@@ -1,0 +1,26 @@
+{
+  "name": "2inchesofwater/panel-sidebar",
+  "description": "A sidebar navigation component for Kirby Panel",
+  "version": "0.0.1",
+  "type": "kirby-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "2inchesofwater",
+      "email": "contact@example.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.0.0",
+    "getkirby/composer-installer": "^1.2"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    }
+  },
+  "extra": {
+    "installer-name": "panel-sidebar"
+  }
+}

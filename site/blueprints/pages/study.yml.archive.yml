@@ -1,0 +1,32 @@
+title: Study
+icon: 🔍
+
+status:
+  draft: Draft
+  unlisted:
+    label: Review
+    text: Waiting for approval
+  listed:
+    label: Published
+    text: Study is ready for participants
+    
+options:
+  changeSlug: true
+  changeStatus: true
+  duplicate: true
+
+# Basic sections with our custom sidebar
+sections:
+  # First a standard fields section to make sure the page loads correctly
+  fields:
+    type: fields
+    fields:
+      heading:
+        type: headline
+        label: Standard Section
+        numbered: false
+  
+  # Then our test sidebar section with minimal configuration
+  navigation:
+    type: sidebar
+    headline: Sidebar Test

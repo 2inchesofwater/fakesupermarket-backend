@@ -6,7 +6,7 @@ panel.plugin('2inchesofwater/contentview-field', {
       props: {
         label: String,
         name: String,
-        text: {
+        value: {
           type: [String, Number, Boolean, Array, Object],
           default: null
         }
@@ -14,7 +14,7 @@ panel.plugin('2inchesofwater/contentview-field', {
       template: /* html */ `
         <k-field :label="label" :name="name" class="k-contentview-field">
           <k-box >
-            {{ text }}
+            {{ value }}
           </k-box>
         </k-field>
       `,

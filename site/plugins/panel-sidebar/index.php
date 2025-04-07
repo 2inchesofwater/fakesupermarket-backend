@@ -4,9 +4,9 @@ use Kirby\Cms\App as Kirby;
 
 @include_once __DIR__.'/vendor/autoload.php';
 
-Kirby::plugin('2inchesofwater/contentview-field', [
+Kirby::plugin('2inchesofwater/panel-sidebar', [
     'fields' => [
-        'contentview' => [
+        'sidebar' => [
             'props' => [
                 'reference' => function ($reference = null) {
                     return $reference;
@@ -27,7 +27,7 @@ Kirby::plugin('2inchesofwater/contentview-field', [
         'panel' => function ($kirby) {
             return [
                 'js' => [
-                    'contentview' => 'media/plugins/contentview-field/index.js'
+                    'sidebar' => 'media/plugins/`/index.js'
                 ]
             ];
         }
