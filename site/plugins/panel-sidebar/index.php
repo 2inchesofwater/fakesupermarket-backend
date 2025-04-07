@@ -2,8 +2,6 @@
 
 use Kirby\Cms\App as Kirby;
 
-@include_once __DIR__.'/vendor/autoload.php';
-
 Kirby::plugin('2inchesofwater/panel-sidebar', [
     // Register the section
     'sections' => [
@@ -37,18 +35,11 @@ Kirby::plugin('2inchesofwater/panel-sidebar', [
             ],
             'toArray' => function () {
                 return [
+                    'navigation' => $this->navigation(),
                     'items' => $this->items(),
                     'defaultView' => $this->defaultView()
                 ];
             }
         ]
-    ],
-    
-    'panel' => [
-        'scripts' => [
-            'dist/index.js'
-        ]
     ]
 ]);
-
-?>

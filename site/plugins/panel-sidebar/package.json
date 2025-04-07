@@ -6,8 +6,9 @@
   "author": "2inchesofwater",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "npx kirbyup src/index.js --watch",
+    "serve": "npx kirbyup serve src/index.js",
+    "build": "npx kirbyup src/index.js"
   },
   "keywords": [
     "kirby",
