@@ -5,34 +5,50 @@ use Kirby\Cms\App as Kirby;
 @include_once __DIR__.'/vendor/autoload.php';
 
 Kirby::plugin('2inchesofwater/panel-sidebar', [
-    'fields' => [
+    // Register the section
+    'sections' => [
         'sidebar' => [
             'props' => [
-                'reference' => function ($reference = null) {
-                    return $reference;
-                }
+                'navigation' => [
+                    'type' => 'array',
+                    'default' => []
+                ],
+                'defaultView' => [
+                    'type' => 'string'
+                ]
             ],
             'computed' => [
-                'value' => function () {
-                    if (!$this->reference) {
-                        return null;
+                'items' => function () {
+                    $items = [];
+                    
+                    if (is_array($this->navigation)) {
+                        foreach ($this->navigation as $item) {
+                            $items[] = [
+                                'name'  => $item['name'] ?? uniqid('nav-'),
+                                'label' => $item['label'] ?? 'Untitled',
+                                'icon'  => $item['icon'] ?? 'page',
+                                'view'  => $item['view'] ?? null
+                            ];
+                        }
                     }
-                    return $this->model()->content()->get($this->reference)->value();
+                    
+                    return $items;
                 }
-            ]
+            ],
+            'toArray' => function () {
+                return [
+                    'items' => $this->items(),
+                    'defaultView' => $this->defaultView()
+                ];
+            }
         ]
     ],
-    'hooks' => [],
-    'areas' => [
-        'panel' => function ($kirby) {
-            return [
-                'js' => [
-                    'sidebar' => 'media/plugins/`/index.js'
-                ]
-            ];
-        }
+    
+    'panel' => [
+        'scripts' => [
+            'dist/index.js'
+        ]
     ]
 ]);
-
 
 ?>

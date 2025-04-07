@@ -15,9 +15,83 @@ options:
   changeStatus: true
   duplicate: true
 
-fields:
+sections:
   sidebar:
-    text: 'hello'
+    type: sidebar
+    navigation:
+      # Content group with heading
+      - name: content-heading
+        label: Content
+        view: heading
+      - name: content
+        label: Main Content
+        icon: text
+        view: fields-content
+      - name: seo
+        label: SEO Settings
+        icon: search
+        view: fields-seo
+        
+      # Settings group with heading  
+      - name: settings-heading
+        label: Configuration
+        view: heading
+      - name: general-settings
+        label: General Settings
+        icon: cog
+        view: fields-settings
+      - name: advanced-settings
+        label: Advanced Options
+        icon: code
+        view: fields-advanced
+    defaultView: fields-content
+
+  # Define the content sections that will be loaded when navigation items are clicked
+  fields-content:
+    type: fields
+    fields:
+      text:
+        label: Text
+        type: textarea
+  
+  fields-seo:
+    type: fields
+    fields:
+      metaTitle:
+        label: Meta Title
+        type: text
+      metaDescription:
+        label: Meta Description
+        type: textarea
+  
+  fields-settings:
+    type: fields
+    fields:
+      status:
+        label: Status
+        type: select
+        options:
+          - draft
+          - published
+  
+  fields-advanced:
+    type: fields
+    fields:
+      customClass:
+        label: Custom CSS Class
+        type: text
+      showInMenu:
+        label: Show in Menu
+        type: toggle
+        default: true
+
+
+
+
+
+
+
+
 
 tabs:
   study:

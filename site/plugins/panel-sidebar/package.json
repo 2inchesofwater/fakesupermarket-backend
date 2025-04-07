@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "2inchesofwater",
   "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
   "keywords": [
     "kirby",
     "kirby-plugin",

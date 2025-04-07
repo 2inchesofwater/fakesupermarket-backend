@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7e745bfe5097c4b3e64ff70b63c7e1201301905e',
+        'reference' => 'e277a8bff0738dd6f4bd9a49657305c9649ebc63',
         'name' => 'getkirby/starterkit',
         'dev' => true,
     ),
@@ -79,7 +79,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7e745bfe5097c4b3e64ff70b63c7e1201301905e',
+            'reference' => 'e277a8bff0738dd6f4bd9a49657305c9649ebc63',
             'dev_requirement' => false,
         ),
         'laminas/laminas-escaper' => array(
