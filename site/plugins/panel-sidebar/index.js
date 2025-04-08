@@ -1,41 +1,37 @@
-(function(){"use strict";function c(t,e,n,s,i,a,r,p){var o=typeof t=="function"?t.options:t;return e&&(o.render=e,o.staticRenderFns=n,o._compiled=!0),{exports:t,options:o}}const l={props:{navigation:{type:Array,default:()=>[]},items:{type:Array,default:()=>[]},defaultView:String},watch:{navigation:{immediate:!0,handler(t){if(t&&t.length&&(!this.items||this.items.length===0)){console.log("Processing navigation from props",t);const e=t.map(n=>({name:n.name||`nav-${Date.now()}`,label:n.label||"Untitled",icon:n.icon||"page",view:n.view||null}));this.$set(this,"items",e)}}}},data(){return{currentItem:null}},mounted(){this.$nextTick(()=>{if(this.initializeSections(),this.items&&this.items.length>0){if(this.defaultView){const e=this.items.find(n=>n.view===this.defaultView);if(e){this.selectItem(e);return}}const t=this.items.find(e=>e.view!=="heading");t&&this.selectItem(t)}})},methods:{selectItem(t){t.view!=="heading"&&(this.currentItem=t,this.showSection(t.view))},initializeSections(){this.items.filter(e=>e.view&&e.view!=="heading").map(e=>e.view).forEach(e=>{const n=document.getElementById(e);n&&(n.hidden=!0,n.setAttribute("aria-labelledby",`menuitem_${e.replace("fields-","")}`))})},showSection(t){document.querySelectorAll(".k-fields-section").forEach(s=>{s.hidden=!0});const n=document.getElementById(t);n&&(n.hidden=!1)},focusNextItem(){const t=this.getMenuItems();if(t.length===0)return;const n=(this.getCurrentMenuItemIndex(t)+1)%t.length;this.focusMenuItem(t[n])},focusPreviousItem(){const t=this.getMenuItems();if(t.length===0)return;const n=(this.getCurrentMenuItemIndex(t)-1+t.length)%t.length;this.focusMenuItem(t[n])},getMenuItems(){return Array.from(this.$el.querySelectorAll(".k-sidebar__item"))},getCurrentMenuItemIndex(t){const e=document.activeElement;return t.indexOf(e)},focusMenuItem(t){t&&t.focus()}}};var d=function(){var e=this,n=e._self._c;return n("section",{staticClass:"k-sidebar-section k-section-name-sidebar",attrs:{role:"navigation"}},[n("ul",{staticClass:"k-sidebar__list test1",attrs:{role:"menu","aria-orientation":"vertical"}},e._l(e.items,function(s){return n("li",{key:s.name,class:[s.view==="heading"?"k-sidebar-heading-item":"k-sidebar__list-item",e.currentItem&&e.currentItem.name===s.name?"k-sidebar__list-item--selected":""],attrs:{role:"presentation"}},[s.view==="heading"?n("div",{staticClass:"k-sidebar-heading",attrs:{role:"presentation"}},[e._v(" "+e._s(s.label)+" ")]):n("a",{staticClass:"k-sidebar__item",attrs:{href:`#${s.view}`,id:`menuitem_${s.name}`,role:"menuitem","aria-controls":s.view,"aria-selected":e.currentItem&&e.currentItem.name===s.name,tabindex:e.currentItem&&e.currentItem.name===s.name?"0":"-1"},on:{click:function(i){return i.preventDefault(),e.selectItem(s)},keydown:[function(i){return!i.type.indexOf("key")&&e._k(i.keyCode,"space",32,i.key,[" ","Spacebar"])?null:(i.preventDefault(),e.selectItem(s))},function(i){return!i.type.indexOf("key")&&e._k(i.keyCode,"enter",13,i.key,"Enter")?null:(i.preventDefault(),e.selectItem(s))},function(i){return!i.type.indexOf("key")&&e._k(i.keyCode,"down",40,i.key,["Down","ArrowDown"])?null:(i.preventDefault(),e.focusNextItem.apply(null,arguments))},function(i){return!i.type.indexOf("key")&&e._k(i.keyCode,"up",38,i.key,["Up","ArrowUp"])?null:(i.preventDefault(),e.focusPreviousItem.apply(null,arguments))}]}},[s.icon?n("span",{staticClass:"k-sidebar-tab-icon"},[n("k-icon",{attrs:{type:s.icon}})],1):e._e(),n("span",{staticClass:"k-sidebar-tab-label"},[e._v(e._s(s.label))])])])}),0)])},u=[],m=c(l,d,u);const f=m.exports;window.panel.plugin("2inchesofwater/panel-sidebar",{created(){console.log("Panel sidebar plugin initialized");const t=new MutationObserver(e=>{e.forEach(n=>{n.type==="childList"&&n.addedNodes.length&&this.initializeSections()})});setTimeout(()=>{const e=document.querySelector(".k-collection");e&&(t.observe(e,{childList:!0,subtree:!0}),this.initializeSections())},100)},sections:{sidebar:f},use:{plugin:function(){const t=document.createElement("style");t.textContent=`
+(function(){"use strict";function l(t,e,i,n,a,c,s,o){var r=typeof t=="function"?t.options:t;return e&&(r.render=e,r.staticRenderFns=i,r._compiled=!0),{exports:t,options:r}}const d={props:{navigation:{type:Array,default:()=>[]},items:{type:Array,default:()=>[]},defaultView:String},watch:{navigation:{immediate:!0,handler(t){if(t&&t.length&&(!this.items||this.items.length===0)){const e=t.map((n,a)=>({index:a,name:n.name||`nav-${Date.now()}`,label:n.label||"Untitled",icon:n.icon||"page",view:n.view||null})),i=t.findIndex(n=>n.view!=="heading");this.$set(this,"items",e),this.selectedIndex=i!==-1?i:0}}}},computed:{console:()=>console,window:()=>window},created(){const t=Array.from(document.querySelectorAll(".k-section"));if(t.forEach(e=>{e.setAttribute("data-tab-controlled","true"),e.hidden=!0}),this.defaultSection){const e=document.querySelector(`.k-section-name-${this.defaultSection}`);e&&(e.style.display="block")}else t.length>0&&(t[0].style.display="block")},data(){return{selectedIndex:null}},mounted(){},methods:{selectMenuItem(t){console.log(t),this.selectedIndex=t,this.items.forEach((i,n)=>{i.isActive=n===t});const e=this.items[t];console.log("selected: ",e.index),this.activateSection(e.view)},activateSection(t){document.querySelectorAll(".k-sections .k-section").forEach(i=>{i.hidden=!0});const e=document.querySelector(`.k-section-name-${t}`);e&&e.removeAttribute("hidden")}}};var u=function(){var e=this,i=e._self._c;return i("menu",{staticClass:"k-sidebar",attrs:{role:"navigation"}},[i("h2",[e._v("Sidebar")]),i("ul",{staticClass:"k-sidebar__list",attrs:{role:"menu","aria-orientation":"vertical"}},e._l(e.items,function(n,a){return i("li",{key:a,class:[n.view==="heading"?"k-sidebar-heading-item":"k-sidebar__list-item",e.selectedIndex===a?"k-sidebar__list-item--selected":""],attrs:{role:"presentation"}},[n.view==="heading"?i("div",{staticClass:"k-sidebar-heading",attrs:{role:"presentation"}},[e._v(" "+e._s(n.label)+" ")]):i("a",{staticClass:"k-sidebar__item",attrs:{id:`menuitem_${n.name}`,role:"menuitem","aria-controls":`k-section-name-${n.view}`,"aria-selected":e.selectedIndex===a,tabindex:e.selectedIndex===a?"0":"-1"},on:{click:function(c){return e.selectMenuItem(n.index)}}},[n.icon?i("span",{staticClass:"k-sidebar-tab-icon"},[i("k-icon",{attrs:{type:n.icon}})],1):e._e(),i("span",{staticClass:"k-sidebar-tab-label"},[e._v(e._s(n.label))])])])}),0)])},f=[],h=l(d,u,f);const m=h.exports;window.panel.plugin("2inchesofwater/panel-sidebar",{created(){console.log("Panel sidebar plugin initialized"),document.addEventListener("DOMContentLoaded",()=>{this.initializeSidebar()});const t=new MutationObserver(e=>{e.forEach(i=>{i.type==="childList"&&i.addedNodes.length&&this.initializeSidebar()})});setTimeout(()=>{const e=document.querySelector(".k-collection");e&&t.observe(e,{childList:!0,subtree:!0})},300)},sections:{sidebar:m},use:{plugin:function(){const t=document.createElement("style");t.textContent=`
         /* Position the sidebar properly */
         .k-section-name-sidebar {
           position: relative;
           z-index: 2;
-          width: 220px !important; /* Force fixed width */
-          flex: 0 0 220px !important;
+          width: 33.3333% !important; /* 1/3 wide */
+          flex: 0 0 33.3333% !important;
           border-right: 1px solid var(--color-border);
           min-height: 100%;
         }
         
-        /* Make the content sections appear next to the sidebar */
-        [data-sidebar-controlled="true"] {
-          display: none !important;
-          position: relative;
-          z-index: 1;
-          margin-left: 220px !important;
-          width: calc(100% - 220px) !important;
-          flex: 1 1 auto !important;
-        }
-        
-        /* Show only the active section */
-        [data-sidebar-controlled="true"].is-active {
-          display: block !important;
+        /* Content sections styling */
+        .k-section[data-sidebar-section="true"] {
+          width: 66.6666% !important; /* 2/3 wide */
+          flex: 0 0 66.6666% !important;
         }
         
         /* Make the .k-collection container flex */
         .k-collection {
           display: flex !important;
           position: relative;
+          flex-wrap: wrap;
         }
-      `,document.head.appendChild(t),window.addEventListener("sidebar-tab-changed",function(e){if(e.detail&&e.detail.viewName){const n=e.detail.viewName;document.querySelectorAll('[data-sidebar-controlled="true"]').forEach(a=>{a.classList.remove("is-active")});const i=document.querySelector(`.k-section-name-${n}`);if(i)i.classList.add("is-active"),console.log(`Activated section: ${n}`);else{console.log(`Section ${n} not found yet, will retry`);const a=new MutationObserver(function(p){const o=document.querySelector(`.k-section-name-${n}`);o&&(o.setAttribute("data-sidebar-controlled","true"),o.classList.add("is-active"),console.log(`Found and activated section: ${n}`),a.disconnect())}),r=document.querySelector(".k-collection");r&&(a.observe(r,{childList:!0,subtree:!0}),setTimeout(()=>a.disconnect(),5e3))}}})}},views:{"sidebar-content":{component:{props:{content:String},template:`
-          <div class="k-sidebar-content-view">
-            <k-text>{{ content || 'Content view' }}</k-text>
-          </div>
-        `}},"sidebar-message":{component:{props:{message:{type:String,default:"No content to display"},icon:{type:String,default:"info"}},template:`
-          <div class="k-sidebar-message-view">
-            <k-icon :type="icon" size="large" class="k-sidebar-message-icon" />
-            <k-text align="center">{{ message }}</k-text>
-          </div>
-        `}}},methods:{getPanelId(t){return`panel-${t}`},hasView(t){var e,n;return!!((n=(e=window.panel)==null?void 0:e.views)!=null&&n[t])},initializeSections(){console.log("Initializing sections for sidebar");const t=document.querySelectorAll('[data-sidebar-controlled="true"]'),e=Array.from(t).some(n=>n.classList.contains("is-active"));if(t.length&&!e){console.log("No active section found, activating default");const n=document.querySelector(".k-section-name-sidebar");if(n){const s=n.__vue__;if(s&&s.defaultView){const i=document.querySelector(`.k-section-name-${s.defaultView}`);i&&(i.classList.add("is-active"),console.log(`Activated default section: ${s.defaultView}`))}else t[0]&&(t[0].classList.add("is-active"),console.log("Activated first section"))}}}}})})();
+        
+        /* Selected menu item styling */
+        .k-sidebar__list-item--selected .k-sidebar__item {
+          background-color: var(--color-background-light);
+          border-left: 4px solid var(--color-focus);
+          font-weight: 600;
+        }
+        
+        /* Menu item hover effect */
+        .k-sidebar__item:hover {
+          background-color: var(--color-background-light);
+          border-left-color: var(--color-focus-light);
+        }
+      `,document.head.appendChild(t)}},methods:{initializeSidebar(){document.querySelectorAll(".k-section-name-sidebar").forEach(e=>{var c;const i=sidebar.__vue__;if(!i)return;const n=i.items||[];n.forEach(s=>{if(s.view&&s.view!=="heading"){const o=document.querySelector(`.k-section-name-${s.view}`);o&&(o.setAttribute("data-sidebar-section","true"),o.setAttribute("aria-labelledby",`menuitem_${s.name}`))}});const a=((c=i.currentItem)==null?void 0:c.view)||i.defaultView;if(a){let s=!1;if(n.forEach(o=>{if(o.view&&o.view!=="heading"){const r=document.querySelector(`.k-section-name-${o.view}`);r&&(o.view===a?(r.hidden=!1,s=!0):r.hidden=!0)}}),!s){const o=document.querySelector(`.k-section-name-${a}`);o&&(o.hidden=!1)}}else if(n.length>0){const s=n.find(o=>o.view!=="heading");s&&s.view&&i.selectItem(s)}})}}})})();
