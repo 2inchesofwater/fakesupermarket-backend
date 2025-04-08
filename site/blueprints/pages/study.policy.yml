@@ -19,41 +19,111 @@ sections:
   sidebar:
     type: sidebar
     navigation:
-      - name: content-heading
-        label: Content
+      - name: study-heading
+        label: Study setup
         view: heading
-      - name: content
-        label: Main Content
-        icon: text
-        view: fields-content
-      - name: seo-settings
-        label: SEO Settings
-        icon: search
-        view: fields-seo
-        
+      - name: study-objectives
+        label: Objectives
+        icon: lab
+        view: fields-objectives
+      - name: study-commercials
+        label: Commercial
+        icon: money
+        view: fields-commercials
+      - name: study-recruitment
+        label: Recruitment
+        icon: smile
+        view: fields-recruitment
+      - name: study-products
+        label: Products
+        icon: store
+        view: fields-products
+
       # Settings group with heading  
-      - name: settings-heading
-        label: Configuration
+      - name: results-heading
+        label: Results
         view: heading
-      - name: general-settings
-        label: General Settings
-        icon: cog
-        view: fields-settings
-      - name: advanced-settings
-        label: Advanced Options
-        icon: code
-        view: fields-advanced
-    defaultView: fields-content
+      - name: results-executive
+        label: Executive summary
+        icon: megaphone
+        view: fields-executive
+      - name: results-performance
+        label: Performance
+        icon: chart
+        view: fields-performance
+      - name: results-quotes
+        label: Quotes
+        icon: quote
+        view: fields-quotes
+      - name: results-sessions
+        label: Sessions
+        icon: video
+        view: fields-sessions        
+    defaultView: fields-objectives
 
   # Define the content sections that will be loaded when navigation items are clicked
-  fields-content:
+  fields-objectives:
     type: fields
     fields:
-      text:
-        label: Ralph
+      workflow:
+        label: Workflow status
+        type: select
+        options:
+          upcoming: Upcoming
+          active: Active
+          completed: Completed
+        required: true
+        when:
+          status: listed
+
+      overview:
+        label: Project context
+        help: "Provide background information about why this study is being conducted, including business objectives, user problems being addressed, and how findings will inform product decisions. Briefly explain how this research fits into the larger product strategy or roadmap. An AI may use this information to provide more insightful analysis." 
         type: textarea
+        size: small
+        buttons: true
+        required: false
+        policy:
+          - admin
+          - editor
+          - team
+
+      overviewView:
+        label: "Project context"
+        type: contentview
+        text: {{ page.overview }}
+        policy: client
+
+      objectives:
+        label: Key objectives
+        help: "List the specific research questions this study aims to answer. Good objectives are focused, measurable, and directly related to user behaviors or attitudes you want to understand. Each objective should help inform clear design or product decisions. An AI may use this information to generate questions for participants."
+        type: structure
+        required: false
+        fields:
+            objective:
+              label: Objective
+              type: text
+              width: 2/3
+            tag:
+              label: Analysis Tag
+              type: text
+              width: 1/3
+              help: "For example, 'nav_issues' or 'checkout_flow')"
+
+
+      startDate:
+        label: Scheduled start
+        type: date
+        time: true
+        required: false
+      
+      endDate:
+        label: Scheduled end
+        type: date
+        time: true
+        required: false
   
-  fields-seo:
+  fields-commercials:
     type: fields
     fields:
       metaTitle:
@@ -63,229 +133,146 @@ sections:
         label: Meta Description
         type: textarea
   
-  fields-settings:
+  fields-recruitment:
     type: fields
     fields:
-      status:
-        label: Status
-        type: select
-        options:
-          - draft
-          - published
-  
-  fields-advanced:
-    type: fields
-    fields:
-      customClass:
-        label: Custom CSS Class
-        type: text
-      showInMenu:
-        label: Show in Menu
-        type: toggle
-        default: true
-
-
-
-
-
-
-
-
-
-tabs:
-  study:
-    label: Study Information
-    icon: 📋
-    columns:
-      - width: 1/2
-        sections:
-          main:
-            type: fields
-            fields:
-              workflow:
-                label: Workflow status
-                type: select
-                options:
-                  upcoming: Upcoming
-                  active: Active
-                  completed: Completed
-                required: true
-                when:
-                  status: listed
-
-              
-              overview:
-                label: Project context
-                help: "Provide background information about why this study is being conducted, including business objectives, user problems being addressed, and how findings will inform product decisions. Briefly explain how this research fits into the larger product strategy or roadmap. An AI may use this information to provide more insightful analysis." 
-                type: textarea
-                size: small
-                buttons: true
-                required: false
-                policy:
-                  - admin
-                  - editor
-                  - team
-
-              overviewView:
-                label: "Project context"
-                type: contentview
-                text: {{ page.overview }}
-                policy: client
-
-              objectives:
-                label: Key objectives
-                help: "List the specific research questions this study aims to answer. Good objectives are focused, measurable, and directly related to user behaviors or attitudes you want to understand. Each objective should help inform clear design or product decisions. An AI may use this information to generate questions for participants."
-                type: structure
-                required: false
-                fields:
-                    objective:
-                      label: Objective
-                      type: text
-                      width: 2/3
-                    tag:
-                      label: Analysis Tag
-                      type: text
-                      width: 1/3
-                      help: "For example, 'nav_issues' or 'checkout_flow')"
-
+      quota:
+        label: Participant Quota
+        type: number
+        min: 1
+        default: 100
+        width: 1/4
+        required: true
       
-              startDate:
-                label: Scheduled start
-                type: date
-                time: true
-                required: false
-              
-              endDate:
-                label: Scheduled end
-                type: date
-                time: true
-                required: false
-      - width: 1/2
-        sections:
-          sidebar:
-            type: fields
-            fields:
-              
-              category:
-                label: Product Category
-                type: pages
-                query: site.find('categories').children
-                layout: cards
-                required: false
-                help: Select the product category this study will use
-                info: "{{ page.products.toPages.count }} products"
-              
-              storefront:
-                label: Storefront UI
-                type: pages
-                query: site.find('storefronts').children
-                required: false
-
-  participants:
-    label: Participant Criteria
-    icon: 👥
-    sections:
-      recruitment:
-        type: fields
+      ageRanges:
+        label: Age Ranges
+        type: checkboxes
+        options:
+          18-24: 18-24
+          25-34: 25-34
+          35-44: 35-44
+          45-54: 45-54
+          55-64: 55-64
+          65plus: 65+
+        width: 3/4
+        required: true
+      
+      gender:
+        label: Gender
+        type: checkboxes
+        options:
+          male: Male
+          female: Female
+          nonbinary: Non-binary
+          other: Other
+        width: 1/2
+        required: true
+      
+      location:
+        label: Geographic Location
+        type: tags
+        width: 1/2
+      
+      income:
+        label: Income Brackets
+        type: checkboxes
+        options:
+          under25k: Under $25,000
+          25k-50k: $25,000-$50,000
+          50k-75k: $50,000-$75,000
+          75k-100k: $75,000-$100,000
+          100k-150k: $100,000-$150,000
+          over150k: Over $150,000
+      
+      screenerQuestions:
+        label: Additional Screener Questions
+        type: structure
         fields:
-          quota:
-            label: Participant Quota
-            type: number
-            min: 1
-            default: 100
-            width: 1/4
-            required: true
-          
-          ageRanges:
-            label: Age Ranges
-            type: checkboxes
-            options:
-              18-24: 18-24
-              25-34: 25-34
-              35-44: 35-44
-              45-54: 45-54
-              55-64: 55-64
-              65plus: 65+
-            width: 3/4
-            required: true
-          
-          gender:
-            label: Gender
-            type: checkboxes
-            options:
-              male: Male
-              female: Female
-              nonbinary: Non-binary
-              other: Other
-            width: 1/2
-            required: true
-          
-          location:
-            label: Geographic Location
-            type: tags
-            width: 1/2
-          
-          income:
-            label: Income Brackets
-            type: checkboxes
-            options:
-              under25k: Under $25,000
-              25k-50k: $25,000-$50,000
-              50k-75k: $50,000-$75,000
-              75k-100k: $75,000-$100,000
-              100k-150k: $100,000-$150,000
-              over150k: Over $150,000
-          
-          screenerQuestions:
-            label: Additional Screener Questions
-            type: structure
-            fields:
-              question:
-                label: Question
-                type: text
-                width: 1/2
-              
-              answerType:
-                label: Answer Type
-                type: select
-                options:
-                  yesno: Yes/No
-                  multiplechoice: Multiple Choice
-                  text: Text
-                width: 1/2
-              
-              options:
-                label: Answer Options
-                type: tags
-                when:
-                  answerType: multiplechoice
-              
-              requiredAnswer:
-                label: Required Answer for Qualification
-                type: text
-                help: What answer(s) must the participant give to qualify?
-
-  results:
-    label: Results
-    icon: 📊
-    when:
-      workflow: completed
-    sections:
-      studyResults:
-        type: fields
-        fields:
-          participantCount:
-            label: Total Participants
-            type: info
-            text: "{{ page.participants.toInt }}"
-          
-          averageTime:
-            label: Average Completion Time
+          question:
+            label: Question
             type: text
-            disabled: true
+            width: 1/2
           
-          downloadReport:
-            label: Download Full Report
-            type: files
-            layout: cards
-            uploads: report
+          answerType:
+            label: Answer Type
+            type: select
+            options:
+              yesno: Yes/No
+              multiplechoice: Multiple Choice
+              text: Text
+            width: 1/2
+          
+          options:
+            label: Answer Options
+            type: tags
+            when:
+              answerType: multiplechoice
+          
+          requiredAnswer:
+            label: Required Answer for Qualification
+            type: text
+            help: What answer(s) must the participant give to qualify?
+
+  
+  fields-products:
+    type: fields
+    fields:
+      category:
+        label: Product Category
+        type: pages
+        query: site.find('categories').children
+        layout: cards
+        required: false
+        help: Select the product category this study will use
+        info: "{{ page.products.toPages.count }} products"
+      
+      storefront:
+        label: Storefront UI
+        type: pages
+        query: site.find('storefronts').children
+        required: false
+
+
+
+
+  fields-executive:
+    type: fields
+    fields:
+      executive-title:
+        label: Executive summary
+        type: text
+      executive-description:
+        label: Meta Description
+        type: textarea
+  
+
+  fields-performance:
+    type: fields
+    fields:
+      performance-title:
+        label: Performance Title
+        type: text
+      performance-description:
+        label: Meta Description
+        type: textarea
+  
+  fields-quotes:
+    type: fields
+    fields:
+      quotes-title:
+        label: Quotes Title
+        type: text
+      quotes-description:
+        label: Meta Description
+        type: textarea
+  
+  fields-sessions:
+    type: fields
+    fields:
+      sessions-title:
+        label: Sessions Meta Title
+        type: text
+      sessions-description:
+        label: Meta Description
+        type: textarea
+  

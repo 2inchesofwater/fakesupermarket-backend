@@ -1,6 +1,5 @@
 <template>
   <menu class="k-sidebar" role="navigation">
-    <h2>Sidebar</h2>
     <ul class="k-sidebar__list" role="menu" aria-orientation="vertical">
       <li v-for='(item, index) in items'
         :key='index'
@@ -61,7 +60,7 @@
     },
 
     mounted (selectedItem) {
-      console.log('All current sections in DOM:', document.querySelectorAll('section'));
+      // console.log('All current sections in DOM:', document.querySelectorAll('section'));
       // Set up a MutationObserver to detect when sections are added to the DOM
       const observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
@@ -69,10 +68,9 @@
             // Check if our sections exist now
             const sections = document.querySelectorAll('.k-section');
             if (sections.length) {
-              console.log(`Sections detected: ${sections.length}`);
+              // console.log(`Sections detected: ${sections.length}`);
               this.hideAllSections();
-              // Optional: disconnect observer if you only need to do this once
-              // observer.disconnect();
+
               if (this.selectedItem) {
                 this.activateSection(this.selectedItem.view);
               }
@@ -81,7 +79,6 @@
         }
       });
       
-      // Start observing the document body or a specific container element
       observer.observe(document.body, { 
         childList: true,
         subtree: true 
@@ -119,7 +116,6 @@
           defaultSection.style.display = 'block';
         }
       } else if (sections.length > 0) {
-        // Otherwise show the first section
         sections[0].style.display = 'block'
       }       
     },
@@ -133,29 +129,27 @@
           item.isActive = (index === i)
         })
         this.selectedItem = this.items[i];
-        console.log('selected: ', this.selectedItem.view);
+        //console.log('selected: ', this.selectedItem.view);
         this.hideAllSections();
         this.activateSection(this.selectedItem.view);
       },
       hideAllSections() {
         try {
               const sections = document.querySelectorAll('.k-section');
-              console.log(`Found ${sections.length} sections`);
+              // console.log(`Found ${sections.length} sections`);
               if (sections.length) {
                 sections.forEach(section => {
                   section.hidden = true;
                 });
-                console.log(`Hidden ${sections.length} sections`);
+                // console.log(`Hidden ${sections.length} sections`);
               } else {
-                console.log('No sections found to hide');
+                // console.log('No sections found to hide');
               }
         } catch (error) {
           console.error('Error hiding sections:', error);
         }
       },
       activateSection(sectionName) {        
-        // Show only the target section
-        console.log('Activate: ', sectionName);
         const targetSection = document.querySelector(`.k-section-name-${sectionName}`);
         if (targetSection) {
           targetSection.removeAttribute('hidden');
