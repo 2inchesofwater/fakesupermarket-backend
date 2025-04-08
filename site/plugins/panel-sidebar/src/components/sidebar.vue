@@ -39,7 +39,6 @@
 
 <script>
 export default {
-  console.log('Inside the script section');
   props: {
     navigation: {
       type: Array,
@@ -179,3 +178,6 @@ export default {
         menuItem.focus();
       }
     }
+  }
+}
+</script>
