@@ -47,44 +47,69 @@
       defaultView: String
     },
     
-    watch: {
-      navigation: {
-        immediate: true,
-        handler(nav) {
-          if (nav && nav.length && (!this.items || this.items.length === 0)) {
-            
-            // console.log('Processing navigation from props', nav);
-            
-            const processedItems = nav.map((item, index) => ({
-              index,
-              name: item.name || `nav-${Date.now()}`,
-              label: item.label || 'Untitled',
-              icon: item.icon || 'page',
-              view: item.view || null
-            }));
-
-            const firstValidIndex = nav.findIndex(item => item.view !== 'heading');
-
-            this.$set(this, 'items', processedItems);
-            this.selectedIndex = firstValidIndex !== -1 ? firstValidIndex : 0;
-          }
-        }
-      }
-    },
-
     computed: {
       console: () => console,
       window: () => window,
     },
-    created () {
+
+    data () {
+      return {
+        items: [],
+        selectedIndex: null,
+        selectedItem: null
+      }
+    },
+
+    mounted (selectedItem) {
+      console.log('All current sections in DOM:', document.querySelectorAll('section'));
+      // Set up a MutationObserver to detect when sections are added to the DOM
+      const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          if (mutation.type === 'childList' && mutation.addedNodes.length) {
+            // Check if our sections exist now
+            const sections = document.querySelectorAll('.k-section');
+            if (sections.length) {
+              console.log(`Sections detected: ${sections.length}`);
+              this.hideAllSections();
+              // Optional: disconnect observer if you only need to do this once
+              // observer.disconnect();
+              if (this.selectedItem) {
+                this.activateSection(this.selectedItem.view);
+              }
+            }
+          }
+        }
+      });
+      
+      // Start observing the document body or a specific container element
+      observer.observe(document.body, { 
+        childList: true,
+        subtree: true 
+      });
+
+      // Initialize items from navigation prop
+      if (this.navigation && this.navigation.length) {
+        const processedItems = this.navigation.map((item, index) => ({
+          index,
+          name: item.name || `nav-${Date.now()}`,
+          label: item.label || 'Untitled',
+          icon: item.icon || 'page',
+          view: item.view || null
+        }));
+        
+        // Find first non-heading item for default selection
+        const firstValidIndex = this.navigation.findIndex(item => item.view !== 'heading');
+        
+        this.items = processedItems;
+        this.selectedIndex = firstValidIndex;
+        this.selectMenuItem(this.selectedIndex);
+      }
+
       const sections = Array.from(document.querySelectorAll('.k-section'))
       
       // Mark them as controlled by your tabs
       sections.forEach(section => {
         section.setAttribute('data-tab-controlled', 'true');
-        
-        // Initially hide all sections
-        section.hidden = true;
       });
       
       // Show the default section if specified
@@ -96,36 +121,41 @@
       } else if (sections.length > 0) {
         // Otherwise show the first section
         sections[0].style.display = 'block'
-      }      
+      }       
     },
-    data () {
-      return {
-        selectedIndex: null 
-      }
-    },
-    mounted () {
-      //this.selectMenuItem(0)
-    },
+
     methods: {
       selectMenuItem (i) {
-        console.log(i);
         this.selectedIndex = i
 
         // loop over all the menu items
         this.items.forEach((item, index) => {
           item.isActive = (index === i)
         })
-        const selectedItem = this.items[i];
-        console.log('selected: ', selectedItem.view);
-        this.activateSection(selectedItem.view);
+        this.selectedItem = this.items[i];
+        console.log('selected: ', this.selectedItem.view);
+        this.hideAllSections();
+        this.activateSection(this.selectedItem.view);
       },
-      activateSection(sectionName) {
-        // Hide all sections that should be controlled by tabs
-        document.querySelectorAll('.k-sections .k-section').forEach(section => {
-          section.hidden = true;
-        });
-        
+      hideAllSections() {
+        try {
+              const sections = document.querySelectorAll('.k-section');
+              console.log(`Found ${sections.length} sections`);
+              if (sections.length) {
+                sections.forEach(section => {
+                  section.hidden = true;
+                });
+                console.log(`Hidden ${sections.length} sections`);
+              } else {
+                console.log('No sections found to hide');
+              }
+        } catch (error) {
+          console.error('Error hiding sections:', error);
+        }
+      },
+      activateSection(sectionName) {        
         // Show only the target section
+        console.log('Activate: ', sectionName);
         const targetSection = document.querySelector(`.k-section-name-${sectionName}`);
         if (targetSection) {
           targetSection.removeAttribute('hidden');

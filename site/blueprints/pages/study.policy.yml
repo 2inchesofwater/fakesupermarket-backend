@@ -50,7 +50,7 @@ sections:
     type: fields
     fields:
       text:
-        label: Text
+        label: Ralph
         type: textarea
   
   fields-seo:

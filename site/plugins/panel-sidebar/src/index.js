@@ -3,7 +3,7 @@ import Sidebar from "./components/sidebar.vue";
 // Register the plugin with Kirby Panel
 window.panel.plugin("2inchesofwater/panel-sidebar", {
   created() {
-    console.log('Panel sidebar plugin initialized');
+    // console.log('Panel sidebar plugin initialized');
     
     // Initialize sections when the DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
