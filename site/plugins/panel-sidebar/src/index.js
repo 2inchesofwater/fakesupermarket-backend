@@ -1,4 +1,4 @@
-import SidebarSection from "./components/sidebar.vue";
+import Sidebar from "./components/sidebar.vue";
 
 // Register the plugin with Kirby Panel
 window.panel.plugin("2inchesofwater/panel-sidebar", {
@@ -28,7 +28,7 @@ window.panel.plugin("2inchesofwater/panel-sidebar", {
   },
   
   sections: {
-    sidebar: SidebarSection
+    sidebar: Sidebar
   },
   
   // Attach global CSS that controls section visibility

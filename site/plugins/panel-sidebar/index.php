@@ -41,5 +41,21 @@ Kirby::plugin('2inchesofwater/panel-sidebar', [
                 ];
             }
         ]
+    ],
+    
+    // Register the assets
+    'api' => [
+        'routes' => [
+            [
+                'pattern' => 'panel-sidebar/sections',
+                'method' => 'GET',
+                'action' => function () {
+                    return [
+                        'status' => 'ok',
+                        'data' => kirby()->request()->get()
+                    ];
+                }
+            ]
+        ]
     ]
 ]);

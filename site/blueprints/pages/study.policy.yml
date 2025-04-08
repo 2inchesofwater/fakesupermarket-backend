@@ -19,7 +19,6 @@ sections:
   sidebar:
     type: sidebar
     navigation:
-      # Content group with heading
       - name: content-heading
         label: Content
         view: heading
@@ -27,7 +26,7 @@ sections:
         label: Main Content
         icon: text
         view: fields-content
-      - name: seo
+      - name: seo-settings
         label: SEO Settings
         icon: search
         view: fields-seo
