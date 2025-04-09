@@ -60,13 +60,17 @@
     },
 
     mounted (selectedItem) {
-      // console.log('All current sections in DOM:', document.querySelectorAll('section'));
-      // Set up a MutationObserver to detect when sections are added to the DOM
+      const container = this.$el.parentElement;
+      if (container) {
+        // Add a unique class to the container for scoping
+        container.classList.add('k-sidebar-parent');
+       }
+
       const observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
           if (mutation.type === 'childList' && mutation.addedNodes.length) {
             // Check if our sections exist now
-            const sections = document.querySelectorAll('.k-section');
+            const sections = document.querySelectorAll('.k-sidebar-parent .k-section');
             if (sections.length) {
               // console.log(`Sections detected: ${sections.length}`);
               this.hideAllSections();
@@ -102,7 +106,7 @@
         this.selectMenuItem(this.selectedIndex);
       }
 
-      const sections = Array.from(document.querySelectorAll('.k-section'))
+      /* const sections = Array.from(document.querySelectorAll('.k-sidebar-section'))
       
       // Mark them as controlled by your tabs
       sections.forEach(section => {
@@ -117,7 +121,7 @@
         }
       } else if (sections.length > 0) {
         sections[0].style.display = 'block'
-      }       
+      }  */     
     },
 
     methods: {
@@ -135,16 +139,16 @@
       },
       hideAllSections() {
         try {
-              const sections = document.querySelectorAll('.k-section');
-              // console.log(`Found ${sections.length} sections`);
-              if (sections.length) {
-                sections.forEach(section => {
-                  section.hidden = true;
-                });
-                // console.log(`Hidden ${sections.length} sections`);
-              } else {
-                // console.log('No sections found to hide');
-              }
+          const sections = document.querySelectorAll('.k-sidebar-parent .k-section');
+          console.log(`Found ${sections.length} sections`);
+          if (sections.length) {
+            sections.forEach(section => {
+              section.hidden = true;
+            });
+            // console.log(`Hidden ${sections.length} sections`);
+          } else {
+            // console.log('No sections found to hide');
+          }
         } catch (error) {
           console.error('Error hiding sections:', error);
         }

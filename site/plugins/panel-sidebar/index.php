@@ -42,7 +42,8 @@ Kirby::plugin('2inchesofwater/panel-sidebar', [
             }
         ]
     ],
-    
+
+
     // Register the assets
     'api' => [
         'routes' => [

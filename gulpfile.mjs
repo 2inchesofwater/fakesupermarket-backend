@@ -10,8 +10,16 @@ function buildStyles() {
     .pipe(gulp.dest('assets/css'));
 }
 
+function buildPlugin() {
+  return gulp.src('site/plugins/panel-sidebar/src/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('site/plugins/panel-sidebar/src/'));
+}
+
 function watchFiles() {
   gulp.watch('2inchesofwater/src/**/*.scss', buildStyles);
+  gulp.watch('site/plugins/panel-sidebar/src/**/*.scss', buildPlugin);
+
 }
 
 // Default task
