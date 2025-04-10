@@ -1,37 +1,37 @@
-menu {
+menu.k-sidebar {
   height: 100%;
   display: flex;
   flex-direction: column;
   width: var(--menu-width-open);
 }
-menu .k-sidebar__list {
+menu.k-sidebar .k-sidebar__list {
   list-style: none;
   margin: 0;
   padding: 0.5rem 0;
 }
-menu .k-sidebar__list li {
+menu.k-sidebar .k-sidebar__list li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-menu .k-sidebar__list-item {
+menu.k-sidebar .k-sidebar__list-item {
   display: flex;
   align-items: center;
   width: 100%;
   text-align: left;
   --button-align: start;
 }
-menu .k-sidebar__list-item.k-sidebar__list-item--selected {
+menu.k-sidebar .k-sidebar__list-item.k-sidebar__list-item--selected {
   pointer-events: none;
   width: 100%;
   --button-color-back: var(--color-white);
   box-shadow: var(--shadow);
   margin-bottom: 0.25rem;
 }
-menu .k-sidebar__list-item.k-sidebar__list-item--selected > .k-sidebar__item {
+menu.k-sidebar .k-sidebar__list-item.k-sidebar__list-item--selected > .k-sidebar__item {
   border-left-color: var(--color-focus);
 }
-menu .k-sidebar__item {
+menu.k-sidebar .k-sidebar__item {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -51,30 +51,30 @@ menu .k-sidebar__item {
   text-align: var(--button-align);
   transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
-menu .k-sidebar__item:hover {
+menu.k-sidebar .k-sidebar__item:hover {
   background-color: var(--color-gray-100);
   border-left-color: var(--color-focus-light);
 }
-menu .k-sidebar__item:focus {
+menu.k-sidebar .k-sidebar__item:focus {
   outline: 2px solid var(--color-focus);
   outline-offset: -2px;
   border-left-color: var(--color-focus);
   position: relative;
   z-index: 1;
 }
-menu :where([role=button], [role=menuitem]) {
+menu.k-sidebar :where([role=button], [role=menuitem]) {
   cursor: pointer;
 }
-menu .k-sidebar-heading-item .k-sidebar-heading {
+menu.k-sidebar .k-sidebar-heading-item .k-sidebar-heading {
   width: 100%;
   padding: 0 1rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
-menu .k-sidebar-heading-item:nth-of-type(1) .k-sidebar-heading {
+menu.k-sidebar .k-sidebar-heading-item:nth-of-type(1) .k-sidebar-heading {
   margin-top: 0;
 }
-menu .k-sidebar-heading {
+menu.k-sidebar .k-sidebar-heading {
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;

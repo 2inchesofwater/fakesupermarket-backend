@@ -1,3 +1,4 @@
+# site/blueprints/pages/category.yml
 title: Product Category
 icon: 🏷️
 
@@ -10,36 +11,76 @@ options:
   changeStatus: true
   duplicate: true
 
-fields:
-  title:
-    label: Category Name
-    type: text
-    required: true
+sections:
+  # Basic category information
+  categoryInfo:
+    type: fields
+    fields:
+      title:
+        label: Category name
+        type: text
+        required: true
+      
+      description:
+        label: Description
+        type: textarea
+        size: small
+
+      productBlueprint:
+        label: Product Type
+        type: select
+        options: query
+        query: 
+          fetch: site.blueprints
+          filter: "this.template.indexOf('products/') > -1"
+          text: "{{ this.title }}"
+          value: "{{ this.name }}"
+        help: "The type of products to be used in this category"
+        width: 1/2
+
+      products:
+        headline: Products
+        type: pages
+        template: product
+        empty: No products in this category yet
+        info: "{{ page.children.count }} products"
+        layout: list
+
+      maxProducts:
+        label: Number of products
+        type: number
+        min: 3
+        default: 12
+        help: "The maximum number of products which participants will be shown"
+
   
-  description:
-    label: Description
-    type: textarea
+  # Product organization settings
+  productOrganisation:
+    headline: Product organisation
+    type: fields
+    fields:
+      manualOrder:
+        label: Ordering
+        type: toggle
+        text:
+          - "Manual"
+          - "Automatic"
+        default: "Automatic"
+        width: 1/2
+        # help: "If enabled, products can be manually ordered in this category"
+
+      automaticSort:
+        label: Sort by
+        type: select
+        options:
+          random: Random
+          price-asc: Price (Low to High)
+          price-desc: Price (High to Low)
+          name-asc: Name (A to Z)
+          name-desc: Name (Z to A)
+          date-asc: Oldest First
+          date-desc: Newest First
+        default: random
+        width: 1/2
+    
   
-  products:
-    label: Products
-    type: pages
-    query: site.index.filterBy('template', 'product')
-    multiple: true
-  
-  target:
-    label: Target Product
-    type: pages
-    query: page.products.toPages
-    max: 1
-  
-  benchmark:
-    label: Benchmark Products
-    type: pages
-    query: page.products.toPages
-    multiple: true
-  
-  competitor:
-    label: Competitor Products
-    type: pages
-    query: page.products.toPages
-    multiple: true

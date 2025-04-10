@@ -26,14 +26,6 @@ Enddate: 2025-05-08 00:00:00
 
 ----
 
-Category: 
-
-----
-
-Storefront: 
-
-----
-
 Quota: 100
 
 ----
@@ -46,7 +38,7 @@ Gender: other, nonbinary, female, male
 
 ----
 
-Location: 
+Location: Australia
 
 ----
 
@@ -55,6 +47,14 @@ Income:
 ----
 
 Screenerquestions: 
+
+----
+
+Category: 
+
+----
+
+Storefront: 
 
 ----
 

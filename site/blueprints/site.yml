@@ -86,13 +86,13 @@ sections:
     size: tiny
 
   collections:
-    headline: Product collections
+    headline: Product Categories
     type: pages
-    template: collections
+    template: category
     create:
-      - collection
+      - category
     limit: 6
-    empty: No product collections found
+    empty: No product categories found
 
   storefronts:
     headline: Storefront UIs

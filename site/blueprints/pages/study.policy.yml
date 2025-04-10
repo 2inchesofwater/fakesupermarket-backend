@@ -126,26 +126,32 @@ sections:
   fields-commercials:
     type: fields
     fields:
-      metaTitle:
-        label: Meta Title
-        type: text
-      metaDescription:
-        label: Meta Description
-        type: textarea
+      commercials-info:
+        label: Placeholder
+        type: info
+        theme: text
+        text: "Still to come..."
   
   fields-recruitment:
     type: fields
     fields:
       quota:
-        label: Participant Quota
+        label: Participant quota
         type: number
         min: 1
         default: 100
         width: 1/4
         required: true
+
+      completion:
+        label: Completions
+        type: info
+        theme: none
+        text: "0 / {{ page.quota.value }}"
+        width: 1/4
       
       ageRanges:
-        label: Age Ranges
+        label: Age ranges
         type: checkboxes
         options:
           18-24: 18-24
@@ -155,26 +161,24 @@ sections:
           55-64: 55-64
           65plus: 65+
         width: 3/4
-        required: true
       
       gender:
         label: Gender
         type: checkboxes
         options:
-          male: Male
           female: Female
+          male: Male
           nonbinary: Non-binary
           other: Other
-        width: 1/2
-        required: true
+        width: 3/4
       
       location:
-        label: Geographic Location
+        label: Geographic location
         type: tags
-        width: 1/2
+        width: 3/4
       
       income:
-        label: Income Brackets
+        label: Income brackets
         type: checkboxes
         options:
           under25k: Under $25,000
@@ -238,41 +242,37 @@ sections:
   fields-executive:
     type: fields
     fields:
-      executive-title:
-        label: Executive summary
-        type: text
-      executive-description:
-        label: Meta Description
-        type: textarea
+      executive-info:
+        label: Executive summary placeholder
+        type: info
+        theme: positive
+        text: "Still to come..."
   
 
   fields-performance:
     type: fields
     fields:
-      performance-title:
-        label: Performance Title
-        type: text
-      performance-description:
-        label: Meta Description
-        type: textarea
+      performance-info:
+        label: Performance placeholder
+        type: info
+        theme: code
+        text: "Still to come..."
   
   fields-quotes:
     type: fields
     fields:
-      quotes-title:
-        label: Quotes Title
-        type: text
-      quotes-description:
-        label: Meta Description
-        type: textarea
+      quotes-info:
+        label: Quotes placeholder
+        type: info
+        theme: passive
+        text: "Still to come..."
   
   fields-sessions:
     type: fields
     fields:
-      sessions-title:
-        label: Sessions Meta Title
-        type: text
-      sessions-description:
-        label: Meta Description
-        type: textarea
+      sessions-info:
+        label: Sessions placeholder
+        type: info
+        theme: dark
+        text: "Still to come..."
   
