@@ -156,7 +156,8 @@ class ProductFetcher {
     const categoryFiles = fs.readdirSync(this.projectDir)
       .filter(file => file.startsWith('category-') && file.endsWith('.html'));
 
-    for (const categoryFile of categoryFiles) {
+    for (let i = 0; i < categoryFiles.length; i++) {
+      const categoryFile = categoryFiles[i];
       console.log(`  Processing ${categoryFile}...`);
       const filepath = path.join(this.projectDir, categoryFile);
       const html = fs.readFileSync(filepath, 'utf-8');
@@ -164,6 +165,14 @@ class ProductFetcher {
 
       // Try to extract the base URL from the HTML
       let baseUrl = this.extractBaseUrl($, html);
+      
+      // If we couldn't extract base URL from HTML, try to use the original category URL
+      if (!baseUrl && i < this.config.categoryListPages.length) {
+        try {
+          const categoryUrl = new URL(this.config.categoryListPages[i]);
+          baseUrl = `${categoryUrl.protocol}//${categoryUrl.host}`;
+        } catch (e) {}
+      }
 
       // Get selectors for this site
       const selectors = this.getSelectorsForSite(baseUrl);

@@ -1,0 +1,10 @@
+{
+  "projectName": "integration-test",
+  "categoryListPages": [
+    "https://example-supermarket.com/category/fruits"
+  ],
+  "productQuota": 3,
+  "requiredProductUrls": [
+    "https://example-supermarket.com/product/apple"
+  ]
+}
