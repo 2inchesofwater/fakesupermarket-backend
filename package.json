@@ -1,0 +1,22 @@
+{
+  "name": "fakesupermarket-backend",
+  "version": "1.0.0",
+  "main": "product-fetcher.js",
+  "scripts": {
+    "test": "node test.js",
+    "fetch": "node product-fetcher.js"
+  },
+  "keywords": [
+    "web-scraping",
+    "product-fetcher",
+    "supermarket"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Product pages fetcher for downloading and parsing supermarket product data",
+  "dependencies": {
+    "axios": "^1.12.2",
+    "cheerio": "^1.1.2",
+    "readline-sync": "^1.4.10"
+  }
+}

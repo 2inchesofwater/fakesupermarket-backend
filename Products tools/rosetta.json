@@ -1,0 +1,22 @@
+{
+  "sites": {
+    "example-supermarket.com": {
+      "productItemSelector": ".product-item",
+      "productLinkSelector": ".product-item a.product-link",
+      "productNameSelector": ".product-name",
+      "productSkuSelector": ".product-sku"
+    },
+    "another-store.com": {
+      "productItemSelector": "div.item",
+      "productLinkSelector": "div.item a[href*='/product/']",
+      "productNameSelector": "h3.title",
+      "productSkuSelector": "span.sku"
+    }
+  },
+  "defaultSelectors": {
+    "productItemSelector": "a[href*='/product/'], a[href*='/p/'], .product a",
+    "productLinkSelector": "a[href*='/product/'], a[href*='/p/']",
+    "productNameSelector": ".product-name, .title, h1, h2",
+    "productSkuSelector": ".sku, [data-sku]"
+  }
+}

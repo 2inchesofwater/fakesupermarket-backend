@@ -1,0 +1,10 @@
+{
+  "projectName": "test-project",
+  "categoryListPages": [
+    "https://example.com/products"
+  ],
+  "productQuota": 5,
+  "requiredProductUrls": [
+    "https://example.com/product1"
+  ]
+}

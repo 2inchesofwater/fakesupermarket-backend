@@ -1,0 +1,12 @@
+{
+  "projectName": "sample-project",
+  "categoryListPages": [
+    "https://example-supermarket.com/categories/fruits",
+    "https://another-store.com/categories/vegetables"
+  ],
+  "productQuota": 20,
+  "requiredProductUrls": [
+    "https://example-supermarket.com/product/banana",
+    "https://example-supermarket.com/product/apple"
+  ]
+}
