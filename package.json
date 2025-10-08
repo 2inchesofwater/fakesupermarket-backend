@@ -1,0 +1,30 @@
+{
+  "name": "fakesupermarket-backend",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "CMS for a UX research system",
+  "keywords": [
+    "UX_research"
+  ],
+  "homepage": "https://github.com/2inchesofwater/fakesupermarket-backend#readme",
+  "bugs": {
+    "url": "https://github.com/2inchesofwater/fakesupermarket-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2inchesofwater/fakesupermarket-backend.git"
+  },
+  "license": "MIT",
+  "author": "Dan Gilmore",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "gulp": "^5.0.0",
+    "gulp-sass": "^6.0.1",
+    "sass": "^1.86.1",
+    "vite": "^6.2.5"
+  }
+}
